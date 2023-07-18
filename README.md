@@ -1,3 +1,6 @@
+# 特点
+根据日期生成对应的日志文件，同时实现重复消息过滤间隔500ms输出一次.
+
 # 1. 编译Windows
 生成工程
 ```shell
@@ -22,7 +25,7 @@ msbuild build/ALL_BUILD.vcxproj -p:Configuration=Release #编译示例程序
 #include "Logger.h"
 
 #if ISSINGNEL
-std::mutex Logger::mutex_;
+std::mutex feifei::Logger::mutex_;
 #endif
 int main() {
 
@@ -30,10 +33,10 @@ int main() {
 
 #if ISSINGNEL
     //单例模式 ISSINGNEL 1
-    Logger &logger=Logger::instance("./");
+    feifei::Logger &logger=feifei::Logger::instance("./");
 #else
     //一般模式 ISSINGNEL 0
-    Logger logger("./");
+    feifei::Logger logger("./");
 #endif
     logger.PrintLog("%s:%d 日志初始化完成",FILENAME,__LINE__);
 
